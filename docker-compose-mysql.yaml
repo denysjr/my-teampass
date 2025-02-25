@@ -1,0 +1,20 @@
+version: '3.2'
+
+services:
+
+  mysql-teampass2:
+    build: mysql/.
+    image: gilvandenysjr/mysql-teampass
+      #image: mariadb:latest
+    restart: unless-stopped
+    ports:
+      - 3307:3306
+    volumes:
+      - /tmp:/tmp
+      - /opt/docker/teampass/data:/var/lib/mysql
+      #- /opt/docker/mysql-slave-41v/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:rw
+      #command:
+      #- --max_allowed_packet=2G --charset=iso-8859-1 --default-character-set=iso-8859-1
+    environment:
+      MYSQL_ROOT_PASSWORD: aa8d38
+      MYSQL_DATABASE: teampass2
